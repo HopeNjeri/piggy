@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Piggy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="piggy">
+        <div class="head">
+            <div class="ears"></div>
+            <div class="eyes"></div>
+            <div class="snout"></div>
+        </div>
+        <div class="body"></div>
+        <div class="arm"></div>
+    </div>
+    <div class="speech">
+        <p id="text">Hello Seven, can you wave? Wave hi, bye. Good job!</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: #fbe8a6;
+    font-family: Arial, sans-serif;
+}
+
+.piggy {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.head {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: pink;
+    border-radius: 50%;
+}
+
+.ears {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background: pink;
+    border-radius: 50%;
+}
+
+.ears:nth-child(2) {
+    left: auto;
+    right: 20px;
+}
+
+.eyes {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    width: 20px;
+    height: 20px;
+    background: black;
+    border-radius: 50%;
+}
+
+.eyes:nth-child(2) {
+    left: auto;
+    right: 30px;
+}
+
+.snout {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    width: 50px;
+    height: 40px;
+    background: #ffcccc;
+    border-radius: 50%;
+}
+
+.body {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    background: pink;
+    border-radius: 20px;
+}
+
+.arm {
+    position: absolute;
+    top: 80px;
+    left: 30px;
+    width: 20px;
+    height: 60px;
+    background: pink;
+    border-radius: 10px;
+    transform-origin: top;
+    animation: wave 2s infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+}
+
+.speech {
+    margin-top: 20px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.speech p {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+const text = document.getElementById("text");
+const phrases = [
+    "Hello Seven, can you wave?",
+    "Wave hi, bye.",
+    "Good job!"
+];
+let i = 0;
+
+setInterval(() => {
+    text.textContent = phrases[i];
+    i = (i + 1) % phrases.length;
+}, 2000);
